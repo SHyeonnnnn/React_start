@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React 설치 및 컴포넌트 생성 사용</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/react.production.min.js"></script>
+    <script src="./js/react-dom.production.min.js"></script>
+    <script src="./js/babel.min.js"></script>
+</head>
+<body>
+    <!-- 1.html DOM Container -->
+    <div id="root">
+
+    </div>
+    <div id="app">
+
+    </div>
+    <script type="text/babel">//jsx 사용하려면 타입에 바벨써야함
+        /* <!-- 2.리액트 컴포넌트 생성하기 --*/
+        class Section1Component extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <section id="section1" style={{width:'100%', height:'100vh',display:'flex'}}>
+                            <h2 style={{margin:'auto',fontSize:'75px',color:'#39c'}}>{this.props.title}</h2>
+                            <h3 style={{margin:'auto',fontSize:'50px',color:'#000'}}>{this.props.name}</h3>
+                            <h3>{this.props.tel}</h3>
+                        </section>
+                    </div>
+                );
+            }
+        }
+        
+        class Section2Component extends React.Component {
+            static defaultProps={
+                title:'Section2Component',
+                name:'강승현',
+                kor: 100,
+                eng: 99,
+                mat: 100
+            }
+            render() { //render 안에서는 오리지널 자바스크립트 사용 가능
+                let {title, name, kor, eng, mat} = this.props //구조분해할당
+                return (
+                    <section2 id="section2" style={sec2Style}>
+                        <h2 style={sec2Styleh2}>{title}</h2>
+                        <h3 style={sec2Styleh3}>{name}</h3>
+                        <h3 style={sec2Styleh3}>{kor}</h3>
+                        <h3 style={sec2Styleh3}>{eng}</h3>
+                        <h3 style={sec2Styleh3}>{mat}</h3>
+                    </section2>
+                        
+                    
+                );
+            }
+        }
+        
+
+        Section1Component.defaultProps={
+            title: 'section1Component',
+            name: '조지현',
+            tel: '01044949814'
+        }
+        const sec2Style={
+            width:'100%',
+            height:'100vh',
+            display:'flex',
+            flexFlow:'row wrap'
+        }
+
+        const sec2Styleh2={
+            margin:'auto',
+            fontSize:'70px',
+            color:'#c39'
+        }
+        const sec2Styleh3={
+            margin:'auto',
+            fontSize:'50px',
+            color:'#000'
+        }
+    /* <!-- 3.리액트 돔 : 리액트 돔 컨테이너와 리액트 컴포넌트 연동하기 --*/
+        ReactDOM.render(
+            <Section1Component/>,
+            document.getElementById('root')
+        )
+        ReactDOM.render(
+            <Section2Component/>,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+</html>
