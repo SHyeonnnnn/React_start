@@ -1,0 +1,4 @@
+*{margin: 0;padding: 0;}
+table{width: 1000px;margin: 20px auto; border: 5px solid mediumorchid; border-collapse: collapse;}
+th,td{border: 1px solid mediumorchid; padding: 5px 10px;}
+a{text-decoration: none;color: #000;}
